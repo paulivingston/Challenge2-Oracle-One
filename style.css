@@ -27,3 +27,9 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+#line-div {
+  font-size: larger;
+  display: flex;
+  justify-content: space-evenly;
+}
