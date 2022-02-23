@@ -6,12 +6,78 @@ brush.fillStyle = "lightgrey";
 brush.fillRect(0,0,w,h); 
 brush.lineWidth = 5;
 
+var word = localStorage.getItem("word");
+var wordArray = word.split("");
+let letterDiv = document.getElementById("letter-div");
+let lineDiv = document.getElementById("line-div");
+
+for (let i=0 ; i<word.length ; i++) {
+    var letterId = "letter"+i;
+    const node = document.createElement("div");
+    letterDiv.appendChild(node);
+    letterDiv.lastChild.setAttribute("id", letterId);
+    const node2 = document.createElement("div");
+    lineDiv.appendChild(node2);
+    const line = document.createElement("p");
+    line.innerHTML = "_";
+    lineDiv.lastChild.appendChild(line);
+} 
+
+var errors = 0;
+
+window.addEventListener('keydown', (e) => {
+    var incorrect = true;
+    for (let j = 0 ; j < word.length ; j++) {
+        if (e.key == wordArray[j]) {
+            var correctLetter = document.getElementById("letter"+j);
+            const paraLetter = document.createElement("p");
+            paraLetter.innerHTML = wordArray[j].toUpperCase();
+            correctLetter.appendChild(paraLetter);
+            incorrect = false;
+        }
+    }
+    if(incorrect) {
+        errors = errors + 1;
+        hangman();
+    }
+});
+
+
 function cleanScreen(){
     brush.clearRect(0,0,w,h);
 }
 
+function hangman() {
+    switch(errors){
+        case 1:
+            error1();
+        break;
+        case 2:
+            error2();
+        break;
+        case 3:
+            error3();
+        break;
+        case 4:
+            error4();
+        break;
+        case 5:
+            error5();
+        break;
+        case 6:
+            error6();
+        break;
+        case 7:
+            error7();
+        break;
+        case 8:
+            error8();
+        break;
+    }
+}
+
 function error1() {
-    brush.beginPath()
+    brush.beginPath();
     brush.moveTo(w*0.05,h*0.95);
     brush.lineTo(w*0.2,h*0.85);
     brush.lineTo(w*0.35,h*0.95);
@@ -20,7 +86,7 @@ function error1() {
 }
 
 function error2() {
-    brush.beginPath()
+    brush.beginPath();
     brush.moveTo(w*0.2,h*0.85);
     brush.lineTo(w*0.2,h*0.1);
     brush.moveTo(w*0.2,h*0.1);
@@ -44,28 +110,28 @@ function error4() {
 }
 
 function error5() {
-    brush.beginPath()
+    brush.beginPath();
     brush.moveTo(w*0.5,h*0.42);
     brush.lineTo(w*0.42,h*0.47);
     brush.stroke();
 }
 
 function error6() {
-    brush.beginPath()
+    brush.beginPath();
     brush.moveTo(w*0.5,h*0.42);
     brush.lineTo(w*0.58,h*0.47);
     brush.stroke();
 }
 
 function error7() {
-    brush.beginPath()
+    brush.beginPath();
     brush.moveTo(w*0.5,h*0.55);
     brush.lineTo(w*0.45,h*0.68);
     brush.stroke();
 }
 
 function error8() {
-    brush.beginPath()
+    brush.beginPath();
     brush.moveTo(w*0.5,h*0.55);
     brush.lineTo(w*0.55,h*0.68);
     brush.moveTo(w*0.48,h*0.25);
@@ -76,8 +142,3 @@ function error8() {
     brush.arc(w*0.5,h*0.31,h*0.02,160,119.5);
     brush.stroke();
 }
-
-
-//export { error1, error2, error3, error4, error5, error6, error7, error8 }
-//import {error1, error2, error3, error4, error5, error6, error7, error8} from canvas.js;
-
