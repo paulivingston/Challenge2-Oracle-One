@@ -5,6 +5,8 @@ var w = screen.width;
 brush.fillStyle = "lightgrey";
 brush.fillRect(0,0,w,h); 
 brush.lineWidth = 5;
+brush.lineJoin = "round";
+brush.lineCap = "round";
 
 var word = localStorage.getItem("word");
 var wordArray = word.split("");
