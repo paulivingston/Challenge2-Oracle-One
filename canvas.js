@@ -8,19 +8,20 @@ brush.lineWidth = 5;
 
 var word = localStorage.getItem("word");
 var wordArray = word.split("");
-let letterDiv = document.getElementById("letter-div");
-let lineDiv = document.getElementById("line-div");
+let wordDiv = document.getElementById("word-div");
 
 for (let i=0 ; i<word.length ; i++) {
     var letterId = "letter"+i;
     const node = document.createElement("div");
-    letterDiv.appendChild(node);
-    letterDiv.lastChild.setAttribute("id", letterId);
+    wordDiv.appendChild(node);
     const node2 = document.createElement("div");
-    lineDiv.appendChild(node2);
+    wordDiv.lastChild.appendChild(node2);
+    wordDiv.lastChild.lastChild.setAttribute("id", letterId);
+    wordDiv.lastChild.lastChild.setAttribute("class", "letter-div");
     const line = document.createElement("p");
     line.innerHTML = "_";
-    lineDiv.lastChild.appendChild(line);
+    wordDiv.lastChild.appendChild(line);
+    wordDiv.lastChild.lastChild.setAttribute("class", "line");
 } 
 
 var errors = 0;
@@ -34,9 +35,10 @@ window.addEventListener('keydown', (e) => {
             paraLetter.innerHTML = wordArray[j].toUpperCase();
             correctLetter.appendChild(paraLetter);
             incorrect = false;
+            wordArray[j] = "";
         }
     }
-    if(incorrect) {
+    if (incorrect) {
         errors = errors + 1;
         hangman();
     }
