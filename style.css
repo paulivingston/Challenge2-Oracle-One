@@ -1,20 +1,50 @@
 
-.titulo {
-  padding: 15px;
-  width: 30vw;
-  margin: auto;
-
+* {
+  background-color: lightgray;
+  padding: 0;
+  margin: 0;
+  font-family: "BalsamiqSans";
 }
 
-.btn {
-  border: 0;
-  color: white;
-  font-weight: bold;
-  background-color: blue;
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-radius: 0.5em;
+body {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 40% 55% 5%;
+}
+
+header {
+  height: 100%;
+}
+
+.header-game {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.titulo {
+  background-color: transparent;
+  width: 100vw;
+  height: 100%;
+  text-align: center;
+  padding-top: 100px;
+  letter-spacing: 60px;
+  font-size: 700%;
+}
+
+.main-index {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100vw;
+  height: 80%;
+}
+
+.main-game {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  background-color: transparent;
 }
 
 .text-input {
@@ -26,10 +56,102 @@
   height: 50px;
   margin-left: auto;
   margin-right: auto;
+  background-color: white;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-#line-div {
-  font-size: larger;
+.btn {
+  border: 0;
+  color: white;
+  font-weight: bold;
+  background-color: rgb(65, 60, 109);
+  padding: 10px;
+  margin: 10px auto;
+  border-radius: 0.5em;
+  width: 200px;
+  height: 75px;
+}
+
+.btn:hover {
+  background-color: rgb(37, 33, 75);
+}
+
+.restart {
+  width: 100px;
+  height: 40px;
+  margin: 20px 20px auto auto;
+}
+
+.word-div {
+  position: absolute;
+  width: 800px;
+  height: auto;
+  bottom: 60px;
+  right: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: none; 
+}
+
+.letter-div {
+  font-size: 500%;
+  width: 60px;
   display: flex;
   justify-content: space-evenly;
+  position: absolute;
+  bottom: 30px;
+}
+
+.line {
+  font-size: 700%;
+  display: flex;
+  justify-content: space-evenly;
+  width: 60px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100vw;
+  
+}
+
+.copyright {
+  text-align: center;
+  width: 100vw;
+  padding-bottom: 10px;
+  font-size: 70%;
+  color: rgb(64, 58, 114);
+}
+
+a {
+  color: rgb(43, 37, 95);
+  text-decoration: none;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: transparent;
+}
+
+
+
+/*FONTS*/
+
+@font-face {
+  font-family: "BalsamiqSans";
+  font-style: normal;
+  font-weight: normal;
+  src: url('fonts/BalsamiqSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: "ConcertOne";
+  font-style: normal;
+  font-weight: normal;
+  src: url('fonts/ConcertOne-Regular.ttf');
 }

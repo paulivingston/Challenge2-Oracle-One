@@ -8,16 +8,17 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <header>
-      <h1 class="titulo">HANGMAN</h1>
+    <canvas id="dashboard" width="1200" height ="650"></canvas>
+    <header class="header-game">
+        <button class="btn restart" onclick="window.location.href='index.html'"">Restart</button>
     </header>
-    <main class="main-index">
-      <input class="text-input" type="text" id="input-nueva-palabra" placeholder="Insert new word"> 
-      <button class="btn" id="iniciar-juego" onclick="startGame()">START GAME</button>
+    <main class="main-game">      
+      <div class="word-div" id="word-div"></div>
     </main>
     <footer>
       <h3 class="copyright">Developed by Paula Livingston - Contact: <a href="mailto:pau.livingston@gmail.com">pau.livingston@gmail.com</a></h3>
     </footer>
+    <script type="text/javascript" src="canvas.js"></script>
     <script type="text/javascript" src="ahorcado.js"></script>
   </body>
 </html>
