@@ -46,11 +46,6 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
-
-function cleanScreen(){
-    brush.clearRect(0,0,w,h);
-}
-
 function hangman() {
     switch(errors){
         case 1:
@@ -146,3 +141,9 @@ function error8() {
     brush.arc(w*0.5,h*0.31,h*0.02,160,119.5);
     brush.stroke();
 }
+
+let restart = document.getElementById('restart');
+restart.addEventListener('click', () => {
+window.location='index.html';
+word = "";
+});

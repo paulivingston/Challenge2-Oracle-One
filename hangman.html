@@ -4,15 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Ahorcado</title>
+    <title>Hangman Game</title>
+    <link rel="icon" href="img/icon.png">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <canvas id="dashboard" width="1200" height ="650"></canvas>
     <header class="header-game">
-        <button class="btn restart" onclick="window.location.href='index.html'"">Restart</button>
+        <button class="btn restart" id="restart">Restart</button>
     </header>
     <main class="main-game">      
+      <div class="wrong" id="wrong"></div>
       <div class="word-div" id="word-div"></div>
     </main>
     <footer>
