@@ -8,7 +8,7 @@ brush.lineWidth = 5;
 brush.lineJoin = "round";
 brush.lineCap = "round";
 
-var word = localStorage.getItem("word");
+var word = localStorage.getItem("word").toUpperCase();
 var wordArray = word.split("");
 let wordDiv = document.getElementById("word-div");
 
@@ -27,22 +27,45 @@ for (let i=0 ; i<word.length ; i++) {
 } 
 
 var errors = 0;
+var letters = [];
+var wrongLetters = [];
+let wrongBox = document.getElementById('wrong');
 
 window.addEventListener('keydown', (e) => {
-    var incorrect = true;
-    for (let j = 0 ; j < word.length ; j++) {
-        if (e.key == wordArray[j]) {
-            var correctLetter = document.getElementById("letter"+j);
-            const paraLetter = document.createElement("p");
-            paraLetter.innerHTML = wordArray[j].toUpperCase();
-            correctLetter.appendChild(paraLetter);
-            incorrect = false;
-            wordArray[j] = "";
+    var letter = e.key.toUpperCase();
+    if ((letter >= 'A' && letter <= 'Z') && (letter.length == 1)){
+        var incorrect = true;
+        var newLetter = true;
+        var won = true;
+        for (let x = 0 ; x < letters.length; x++) {
+            if (letter == letters[x]) {
+                newLetter = false;
+                return;
+            }
         }
-    }
-    if (incorrect) {
-        errors = errors + 1;
-        hangman();
+        if (newLetter) {
+            letters.push(letter);
+            for (let j = 0 ; j < word.length ; j++) {
+                if (letter == wordArray[j]) {
+                    var correctLetter = document.getElementById("letter"+j);
+                    const paraLetter = document.createElement("p");
+                    paraLetter.innerHTML = wordArray[j];
+                    correctLetter.appendChild(paraLetter);
+                    incorrect = false;
+                    wordArray[j] = "";
+                }
+                if(wordArray[j] != "") won=false;
+            }
+            if (incorrect) {
+                errors = errors + 1;
+                hangman();
+                wrongLetters.push(letter);
+                var wrongArray = wrongLetters.join(', ');
+                wrongBox.innerHTML = wrongArray;
+            }
+
+            if(won) finishModal();
+        }
     }
 });
 
@@ -69,7 +92,7 @@ function hangman() {
         case 7:
             error7();
         break;
-        case 8:
+        default:
             error8();
         break;
     }
@@ -140,10 +163,40 @@ function error8() {
     brush.moveTo(w*0.487,h*0.31);
     brush.arc(w*0.5,h*0.31,h*0.02,160,119.5);
     brush.stroke();
+
+    let finishText = document.getElementById('finish-text');
+    finishText.innerHTML = "Ups... You lose...<br>The word was: <br>"+ word;
+
+    finishModal();
 }
 
 let restart = document.getElementById('restart');
 restart.addEventListener('click', () => {
-window.location='index.html';
-word = "";
+    window.location='index.html';
+    word = "";
 });
+
+
+
+
+
+function finishModal() {
+    var modal = document.getElementById("finish");
+    modal.style.display = "block";
+
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+    modal.style.display = "none";
+}
+
+    window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+  }
+  
+}
+
+
+
+// When the user clicks anywhere outside of the modal, close it

@@ -10,17 +10,25 @@
   </head>
   <body>
     <canvas id="dashboard" width="1200" height ="650"></canvas>
+    <div id="finish" class="finish">
+      <div class="finish-content">
+        <h3 id="finish-text">Congrats!<br>You guessed the word!</h3>
+        <span class="close"> x </span>
+      </div>
+    </div>
     <header class="header-game">
         <button class="btn restart" id="restart">Restart</button>
+        <div class="wrong">
+          <h3>You've already tried:</h3>
+          <p id="wrong"></p>
+        </div> 
     </header>
-    <main class="main-game">      
-      <div class="wrong" id="wrong"></div>
+    <main class="main-game">     
       <div class="word-div" id="word-div"></div>
     </main>
     <footer>
       <h3 class="copyright">Developed by Paula Livingston - Contact: <a href="mailto:pau.livingston@gmail.com">pau.livingston@gmail.com</a></h3>
     </footer>
-    <script type="text/javascript" src="canvas.js"></script>
-    <script type="text/javascript" src="ahorcado.js"></script>
+    <script type="text/javascript" src="scripts/canvas.js"></script>
   </body>
 </html>
